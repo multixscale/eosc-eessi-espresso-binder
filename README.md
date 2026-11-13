@@ -8,7 +8,30 @@
 
 ## Locally
 
-Requires EESSI to be available on the system: https://www.eessi.io/docs/getting_access/native_installation/
+Requires EESSI to be available on the system: https://www.eessi.io/docs/getting_access/native_installation/ 
+
+### Running using a `venv`
+
+- Set up the environment to launch JupyterLab
+  ```bash
+  # Create a virtual environment
+  python -m venv venv
+  # Activate it
+  source venv/bin/activate
+  # Install the packages we need to run it locally
+  pip install -r local_run_requirements.txt
+  # Install any packages the binder requires
+  pip install -r .binder/requirements.txt
+  ```
+- Start JupyterLab with our custom settings
+  ```
+  # Start JupyterLab with the custom binder setup
+  bash .binder/start jupyter lab --no-browser
+  ```
+- Watch the output for the URL to access the notebook server, e.g. `http://127.0.0.1:<PORT>/?token=<TOKEN>`.
+- Open the URL in your browser
+
+### If you have `docker` available
 
 - Install [jupyter-repo2docker](https://pypi.org/project/jupyter-repo2docker/):
 
@@ -26,6 +49,7 @@ Requires EESSI to be available on the system: https://www.eessi.io/docs/getting_
   ```bash
   git clone https://github.com/multixscale/eosc-eessi-espresso-binder.git binder-repo
   cd binder-repo
+  # Start a container and bind mount EESSI inside
   jupyter-repo2docker -v /cvmfs/software.eessi.io/:/cvmfs/software.eessi.io/  .
   ```
 

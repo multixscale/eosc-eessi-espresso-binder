@@ -1,0 +1,5 @@
+jupyterlab
+ipywidgets
+jupyter_app_launcher
+jupyter-archive
+voila
